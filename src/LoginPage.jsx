@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { API } from './config';
 
 export default function LoginPage() {
     const [e, setE] = useState('');
@@ -7,7 +8,7 @@ export default function LoginPage() {
 
     const loginFun = async () => {
         setLoading(true);
-        let res = await fetch('http://localhost:5001/login', {
+        let res = await fetch(API + '/login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email: e, password: p})

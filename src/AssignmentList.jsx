@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { API } from './config';
 
 export default function AssignmentList({role}) {
     const [aList, setAList] = useState([]);
@@ -11,7 +12,7 @@ export default function AssignmentList({role}) {
 
     const loadStuff = async () => {
         let tok = localStorage.getItem('tok');
-        let res = await fetch('http://localhost:5001/assignment', {
+        let res = await fetch(API + '/assignment', {
             headers: {'Authorization': 'Bearer ' + tok}
         });
         let data1 = await res.json();
@@ -20,7 +21,7 @@ export default function AssignmentList({role}) {
 
     const pub = async (id) => {
         let tok = localStorage.getItem('tok');
-        await fetch('http://localhost:5001/assignment/publish', {
+        await fetch(API + '/assignment/publish', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -33,7 +34,7 @@ export default function AssignmentList({role}) {
 
     const del = async (id) => {
         let tok = localStorage.getItem('tok');
-        await fetch('http://localhost:5001/assignment/delete/' + id, {
+        await fetch(API + '/assignment/delete/' + id, {
             method: 'DELETE',
             headers: {'Authorization': 'Bearer ' + tok}
         });
@@ -43,7 +44,7 @@ export default function AssignmentList({role}) {
     const subAnswer = async (aid) => {
         let text123 = ans[aid];
         let tok = localStorage.getItem('tok');
-        let r = await fetch('http://localhost:5001/submission', {
+        let r = await fetch(API + '/submission', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -61,7 +62,7 @@ export default function AssignmentList({role}) {
 
     const vSub = async (aid) => {
         let tok = localStorage.getItem('tok');
-        let res = await fetch('http://localhost:5001/submission/' + aid, {
+        let res = await fetch(API + '/submission/' + aid, {
             headers: {'Authorization': 'Bearer ' + tok}
         });
         let val = await res.json();

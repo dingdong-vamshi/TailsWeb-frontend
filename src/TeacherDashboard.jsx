@@ -1,5 +1,6 @@
 import { useState } from "react"
 import AssignmentList from "./AssignmentList";
+import { API } from './config';
 
 export default function TeacherDashboard() {
     const [title1, setTitle1] = useState('')
@@ -8,7 +9,7 @@ export default function TeacherDashboard() {
 
     const createA = async () => {
         let tok = localStorage.getItem('tok');
-        await fetch('http://localhost:5001/assignment/create', {
+        await fetch(API + '/assignment/create', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

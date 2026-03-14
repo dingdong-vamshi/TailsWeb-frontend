@@ -3,9 +3,11 @@ import { useState } from 'react';
 export default function LoginPage() {
     const [e, setE] = useState('');
     const [p, setP] = useState('');
+    const [loading, setLoading] = useState(false);
 
     const loginFun = async () => {
-        let res = await fetch('http://localhost:5000/login', {
+        setLoading(true);
+        let res = await fetch('http://localhost:5001/login', {
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
             body: JSON.stringify({email: e, password: p})
@@ -21,19 +23,31 @@ export default function LoginPage() {
             }
         } else {
             alert('login fail');
+            setLoading(false);
         }
     }
 
     return (
-        <div className="p-10">
-            <h1 className="text-3xl font-bold mb-4">Login Pls</h1>
-            <div className="flex border p-4 flex-col w-[300px] bg-white">
-                <input className="border mb-2 p-1" type="text" placeholder="email" value={e} onChange={(x) => setE(x.target.value)} />
-                <input className="border mb-2 p-1" type="password" placeholder="pass" value={p} onChange={(x) => setP(x.target.value)} />
-                <button className="bg-blue-500 text-white p-1" onClick={loginFun}>Submit</button>
+        <div className="min-h-screen bg-gradient-to-br from-blue-100 to-indigo-200 flex items-center justify-center">
+            <div className="bg-white rounded-xl shadow-lg p-8 w-[380px]">
+                <h1 className="text-2xl font-bold text-center mb-1 text-indigo-700">📚 Assignment Portal</h1>
+                <p className="text-center text-gray-400 text-sm mb-6">Login to continue</p>
+                
+                <label className="block text-sm font-medium text-gray-600 mb-1">Email</label>
+                <input className="border border-gray-300 rounded-lg w-full p-2 mb-3 focus:outline-none focus:ring-2 focus:ring-indigo-400" type="text" placeholder="email@example.com" value={e} onChange={(x) => setE(x.target.value)} />
+                
+                <label className="block text-sm font-medium text-gray-600 mb-1">Password</label>
+                <input className="border border-gray-300 rounded-lg w-full p-2 mb-4 focus:outline-none focus:ring-2 focus:ring-indigo-400" type="password" placeholder="••••••" value={p} onChange={(x) => setP(x.target.value)} />
+                
+                <button className="bg-indigo-600 hover:bg-indigo-700 transition text-white w-full p-2 rounded-lg font-medium" onClick={loginFun} disabled={loading}>
+                    {loading ? 'Logging in...' : 'Login'}
+                </button>
+
+                <div className="mt-4 text-xs text-gray-400 text-center">
+                    <p>Teacher: teacher@test.com / 123</p>
+                    <p>Student: student@test.com / 123</p>
+                </div>
             </div>
-            <br/>
-            <p className="text-sm">P.S. go to localhost:5000/initdb to create dummy users first</p>
         </div>
     )
 }

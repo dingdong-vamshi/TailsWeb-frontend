@@ -33,7 +33,7 @@ export default function TeacherDashboard() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
             <div className="flex justify-between items-center mb-6">
-                <h1 className="text-2xl font-bold text-indigo-800">📋 Teacher Dashboard</h1>
+                <h1 className="text-2xl font-bold text-indigo-800">Teacher Dashboard</h1>
                 <button className="bg-red-500 hover:bg-red-600 text-white text-sm px-3 py-1 rounded-lg transition" onClick={logout}>Logout</button>
             </div>
 

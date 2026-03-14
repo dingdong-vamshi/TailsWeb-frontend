@@ -89,7 +89,7 @@ export default function AssignmentList({role}) {
                             <span className={`text-xs px-2 py-1 rounded-full font-medium ${statusColor(a.status)}`}>{a.status}</span>
                         </div>
                         <p className="text-sm text-gray-500 mb-2">{a.description}</p>
-                        <p className="text-xs text-gray-400 mb-3">📅 Due: {a.dueDate || 'No date'}</p>
+                        <p className="text-xs text-gray-400 mb-3">Due: {a.dueDate || 'No date'}</p>
                         
                         {role === 'teacher' && a.status === 'Draft' && (
                             <div className="flex gap-2">
@@ -100,7 +100,7 @@ export default function AssignmentList({role}) {
 
                         {role === 'teacher' && a.status !== 'Draft' && (
                             <div className="mt-2">
-                                <button className="bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs px-3 py-1 rounded-lg transition" onClick={() => vSub(a._id)}>📄 View Submissions</button>
+                                <button className="bg-gray-200 hover:bg-gray-300 text-gray-700 text-xs px-3 py-1 rounded-lg transition" onClick={() => vSub(a._id)}>View Submissions</button>
                                 {subs[a._id] && (
                                     <div className="mt-2 space-y-1">
                                         {subs[a._id].length === 0 && <p className="text-xs text-gray-400">No submissions yet</p>}

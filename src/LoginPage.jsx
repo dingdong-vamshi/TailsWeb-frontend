@@ -31,7 +31,7 @@ export default function LoginPage() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-blue-100 to-indigo-200 flex items-center justify-center">
             <div className="bg-white rounded-xl shadow-lg p-8 w-[380px]">
-                <h1 className="text-2xl font-bold text-center mb-1 text-indigo-700">📚 Assignment Portal</h1>
+                <h1 className="text-2xl font-bold text-center mb-1 text-indigo-700">Assignment Portal</h1>
                 <p className="text-center text-gray-400 text-sm mb-6">Login to continue</p>
                 
                 <label className="block text-sm font-medium text-gray-600 mb-1">Email</label>
